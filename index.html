@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="he" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>My App Hub</title>
+<meta name="theme-color" content="#0b1220" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="App Hub" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <h1>My App Hub</h1>
+</header>
+
+<main id="app">
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="Search apps..." autocomplete="off" enterkeyhint="search" />
+  </div>
+
+  <div id="status" class="status" hidden></div>
+
+  <ul id="list" class="list"></ul>
+</main>
+
+<!-- Passphrase gate -->
+<div id="gate" class="gate" hidden>
+  <div class="gate-card">
+    <h2>🔒 My App Hub</h2>
+    <p>Enter your passphrase to unlock your apps.</p>
+    <input id="gate-input" type="password" placeholder="Passphrase" autocomplete="off" />
+    <button id="gate-submit">Unlock</button>
+    <p id="gate-error" class="gate-error" hidden></p>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
