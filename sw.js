@@ -3,7 +3,7 @@
 // always network-only and are never cached, so credentials never sit in
 // Cache Storage on the device.
 
-const CACHE_NAME = "myapphub-shell-v3";
+const CACHE_NAME = "myapphub-shell-v4";
 const SHELL_FILES = [
   "./",
   "./index.html",
@@ -47,11 +47,18 @@ self.addEventListener("fetch", function (event) {
     return;
   }
 
-  // Shell assets: cache-first, falling back to network.
+  // Shell assets: network-first so a new version shows up on the very next launch;
+  // the cached copy is only the offline fallback.
   if (event.request.method === "GET" && url.origin === self.location.origin) {
     event.respondWith(
-      caches.match(event.request).then(function (cached) {
-        return cached || fetch(event.request);
+      fetch(event.request, { cache: "no-cache" }).then(function (res) {
+        if (res && res.ok) {
+          const copy = res.clone();
+          caches.open(CACHE_NAME).then(function (cache) { cache.put(event.request, copy); });
+        }
+        return res;
+      }).catch(function () {
+        return caches.match(event.request);
       })
     );
   }

@@ -29,7 +29,7 @@
 
   // First match wins. Order matters (e.g. "Home Helper Hub" is a pantry app, not "home").
   var ICON_RULES = [
-    [/task|todo|משימ/, "clipboard"],
+    [/task|todo|habit|משימ|הרגל/, "clipboard"],
     [/mail|inbox|דוא|מייל/, "mail"],
     [/pantry|food|grocer|kitchen|helper|מזון|מזווה|מטבח/, "basket"],
     [/routine|chore|home|שגר|בית/, "home"],
