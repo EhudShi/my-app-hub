@@ -1,9 +1,9 @@
-// My App Hub service worker — caches the static shell ONLY.
+// My Apps Hub service worker — caches the static shell ONLY.
 // API calls to the Apps Script backend (which return usernames/passwords) are
 // always network-only and are never cached, so credentials never sit in
 // Cache Storage on the device.
 
-const CACHE_NAME = "myapphub-shell-v1";
+const CACHE_NAME = "myapphub-shell-v3";
 const SHELL_FILES = [
   "./",
   "./index.html",
@@ -18,7 +18,8 @@ const SHELL_FILES = [
 self.addEventListener("install", function (event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(SHELL_FILES);
+      // cache: "reload" bypasses the browser HTTP cache so a new version never precaches stale files.
+      return cache.addAll(SHELL_FILES.map(function (f) { return new Request(f, { cache: "reload" }); }));
     })
   );
   self.skipWaiting();

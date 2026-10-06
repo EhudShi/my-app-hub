@@ -1,46 +1,53 @@
 <!DOCTYPE html>
-<html lang="he" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>My App Hub</title>
-<meta name="theme-color" content="#0b1220" />
+<title>My Apps Hub</title>
+<meta name="theme-color" content="#fbf9f4" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#141311" media="(prefers-color-scheme: dark)" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="icons/icon-192.png" />
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="App Hub" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Apps Hub" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header class="topbar">
-  <h1>My App Hub</h1>
+  <div class="kicker">Personal index</div>
+  <h1>My Apps Hub</h1>
+  <p id="count" class="count" hidden></p>
 </header>
 
 <main id="app">
   <div class="search-wrap">
-    <input id="search" type="search" placeholder="Search apps..." autocomplete="off" enterkeyhint="search" />
+    <label class="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+      <input id="search" type="search" placeholder="Search apps" aria-label="Search apps" autocomplete="off" enterkeyhint="search" />
+    </label>
   </div>
 
-  <div id="status" class="status" hidden></div>
+  <div id="status" class="status" role="status" hidden></div>
 
   <ul id="list" class="list"></ul>
 </main>
 
 <!-- Passphrase gate -->
 <div id="gate" class="gate" hidden>
-  <div class="gate-card">
-    <h2>🔒 My App Hub</h2>
-    <p>Enter your passphrase to unlock your apps.</p>
-    <input id="gate-input" type="password" placeholder="Passphrase" autocomplete="off" />
-    <button id="gate-submit">Unlock</button>
-    <p id="gate-error" class="gate-error" hidden></p>
+  <div class="gate-box">
+    <div class="kicker">Personal index</div>
+    <h2>My Apps Hub</h2>
+    <p class="gate-sub">Enter your passphrase to unlock.</p>
+    <input id="gate-input" type="password" placeholder="Passphrase" aria-label="Passphrase" autocomplete="off" />
+    <button id="gate-submit" type="button">Unlock</button>
+    <p id="gate-error" class="gate-error" role="alert" hidden></p>
   </div>
 </div>
 
-<div id="toast" class="toast" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
 
 <script src="config.js"></script>
 <script src="app.js"></script>

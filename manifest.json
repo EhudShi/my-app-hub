@@ -1,13 +1,13 @@
 {
-  "name": "My App Hub",
-  "short_name": "App Hub",
+  "name": "My Apps Hub",
+  "short_name": "Apps Hub",
   "description": "Launcher for my personal apps and sites",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0b1220",
-  "theme_color": "#2563eb",
+  "background_color": "#fbf9f4",
+  "theme_color": "#fbf9f4",
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
